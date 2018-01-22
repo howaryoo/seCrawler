@@ -8,7 +8,19 @@ SearchEngines = {
 
 
 SearchEngineResultSelectors= {
-    'google': '//h3/a/@href',
-    'bing':'//h2/a/@href',
-    'baidu':'//h3/a/@href',
+    'google': {
+        'url': '//h3/a/@href',
+        'title': '//h3/a/text()',
+        'description': '//p/text()'
+    },
+   'bing':{
+        'url': '//h2/a/@href',
+        'title': '//h2/a/text()',
+        'description': '//p/text()'
+    },
+    'baidu': {
+        'url': '//h3/a/@href',
+        'title': '//h3/a/text()',
+        'description': '//p/text()'
+    },
 }

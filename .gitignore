@@ -1,2 +1,9 @@
-*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
 urls.txt
+.idea
+items.jl
+urls.txt
+scripts/
+.cache

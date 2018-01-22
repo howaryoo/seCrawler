@@ -14,7 +14,7 @@ BOT_NAME = 'seCrawler'
 SPIDER_MODULES = ['seCrawler.spiders']
 NEWSPIDER_MODULE = 'seCrawler.spiders'
 
-ITEM_PIPELINES = {'seCrawler.pipelines.SespiderPipeline': 1}
+ITEM_PIPELINES = {'seCrawler.pipelines.JsonWriterPipeline': 1}
 
 USER_AGENT = "Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.93 Safari/537.36"
 
@@ -31,7 +31,7 @@ DEPTH_LIMIT = 1
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY=3
+DOWNLOAD_DELAY=1
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN=16
 # CONCURRENT_REQUESTS_PER_IP=16

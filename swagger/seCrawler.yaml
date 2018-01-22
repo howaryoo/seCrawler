@@ -1,0 +1,49 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: SE crawler API
+  description: Search Engine Crawler API
+
+schemes:
+  - http
+  - https
+basePath: /se/v1
+
+paths:
+  /search:
+    get:
+      summary: Gets search engines responses
+      operationId: api.search
+      description: Returns a list containing all responses for the provided keyword
+      parameters:
+       - name: keyword
+         in: query
+         description: search keyword
+         type: string
+         required: true
+       - name: limit
+         in: query
+         description: Number pages to crawl
+         type: integer
+         default: 50
+       - name: sengine
+         in: query
+         description: search engine used
+         type: string
+         default: google
+      responses:
+        200:
+          description: Search engine results
+          schema:
+            type: array
+            items:
+              properties:
+                title:
+                  type: string
+                url:
+                  type: string
+                description:
+                  type: string
+        404:
+          description: No response found
