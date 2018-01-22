@@ -1,9 +1,8 @@
-__author__ = 'tixie'
+from __future__ import  print_function
+from .searchEngines import SearchEngines
 
-from searchEngines import SearchEngines
 
-
-class searResultPages:
+class searchResultPages:
     totalPage = 0
     keyword = None,
     searchEngineUrl = None
@@ -15,17 +14,17 @@ class searResultPages:
         self.searchEngineUrl = SearchEngines[self.searchEngine]
         self.totalPage = totalPage
         self.keyword = keyword
-        print "total page:{0}".format(self.totalPage)
+        print("total page:{0}".format(self.totalPage))
 
     def __iter__(self):
-        return  self
+        return self
 
     def _currentUrl(self):
-        return self.searchEngineUrl.format(self.keyword, str(self.currentPage  * 10))
+        return self.searchEngineUrl.format(self.keyword, str(self.currentPage * 10))
 
     def next(self):
         if self.currentPage < self.totalPage:
-            url =  self._currentUrl()
+            url = self._currentUrl()
             self.currentPage = self.currentPage + 1
-            return  url
+            return url
         raise StopIteration

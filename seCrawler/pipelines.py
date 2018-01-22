@@ -4,8 +4,7 @@
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
-from scrapy.exceptions import DropItem
-import  logging
+import json
 
 class SespiderPipeline(object):
     def __init__(self):
@@ -15,3 +14,24 @@ class SespiderPipeline(object):
     def process_item(self, item, spider):
         self.file.write(item['url']+'\n')
         return item
+
+
+class SeMemoryPipeline(object):
+    def __init__(self):
+        self.result = []
+
+    def process_item(self, item, spider):
+        self.result.append(dict(item))
+
+
+class JsonWriterPipeline(object):
+    def open_spider(self, spider):
+        self.result = []
+        self.file = open('items.jl', 'w')
+
+    def close_spider(self, spider):
+        json.dump(self.result, self.file)
+        self.file.close()
+
+    def process_item(self, item, spider):
+        self.result.append(dict(item))
